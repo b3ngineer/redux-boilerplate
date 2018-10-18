@@ -1,9 +1,34 @@
 {
   "name": "terse-redux",
   "version": "1.0.0",
-  "description": "Making Redux terse... because if I have to write one more switch statement I'm going to barf.",
+  "description":
+    "Making Redux terse... because if I have to write one more switch statement I'm going to barf.",
   "main": "src/index.js",
   "repository": "git@github.com:b3ngineer/terse-redux.git",
   "author": "b3ngineer <ben.harris.when@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "webpack": "webpack",
+    "start": "webpack --config=dev.config.js --watch"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.0.0-beta.49",
+    "@babel/core": "^7.0.0-beta.49",
+    "@babel/plugin-proposal-class-properties": "^7.0.0-beta.49",
+    "@babel/preset-env": "^7.0.0-beta.49",
+    "@babel/preset-stage-0": "^7.0.0-beta.49",
+    "eslint": "^5.7.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-node": "^7.0.1",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "prettier": "^1.14.3",
+    "webpack": "^4.21.0",
+    "webpack-command": "^0.4.1"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "semi": false
+  }
 }
