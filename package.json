@@ -1,28 +1,33 @@
 {
   "name": "terse-redux",
   "version": "1.0.0",
-  "description":
-    "Making Redux terse... because if I have to write one more switch statement I'm going to barf.",
-  "main": "src/index.js",
+  "description": "Making Redux terse... because if I have to write one more switch statement I'm going to barf.",
+  "main": "dist/main.js",
   "repository": "git@github.com:b3ngineer/terse-redux.git",
   "author": "b3ngineer <ben.harris.when@gmail.com>",
   "license": "MIT",
   "scripts": {
+    "jest": "jest",
     "webpack": "webpack",
-    "start": "webpack --config=dev.config.js --watch"
+    "start": "webpack --config=dev.config.js --watch",
+    "test": "jest dist/test.spec.js"
   },
   "devDependencies": {
     "@babel/cli": "^7.0.0-beta.49",
     "@babel/core": "^7.0.0-beta.49",
     "@babel/plugin-proposal-class-properties": "^7.0.0-beta.49",
+    "@babel/plugin-proposal-decorators": "^7.1.2",
     "@babel/preset-env": "^7.0.0-beta.49",
     "@babel/preset-stage-0": "^7.0.0-beta.49",
+    "babel-loader": "^8.0.4",
+    "colorize": "^0.1.0",
     "eslint": "^5.7.0",
     "eslint-config-standard": "^12.0.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-node": "^7.0.1",
     "eslint-plugin-promise": "^4.0.1",
     "eslint-plugin-standard": "^4.0.0",
+    "jest": "^23.6.0",
     "prettier": "^1.14.3",
     "webpack": "^4.21.0",
     "webpack-command": "^0.4.1"

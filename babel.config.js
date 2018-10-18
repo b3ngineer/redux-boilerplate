@@ -3,16 +3,7 @@ module.exports = function (api) {
   return {
     presets: [
       [
-        '@babel/preset-env',
-        {
-          targets: { node: '8' }
-        }
-      ],
-      [
-        '@babel/stage-0',
-        {
-          decoratorsLegacy: true
-        }
+        '@babel/preset-env'
       ]
     ],
     plugins: [
