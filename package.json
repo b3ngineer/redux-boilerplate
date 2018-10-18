@@ -1,0 +1,9 @@
+{
+  "name": "terse-redux",
+  "version": "1.0.0",
+  "description": "Making Redux terse... because if I have to write one more switch statement I'm going to barf.",
+  "main": "src/index.js",
+  "repository": "git@github.com:b3ngineer/terse-redux.git",
+  "author": "b3ngineer <ben.harris.when@gmail.com>",
+  "license": "MIT"
+}
