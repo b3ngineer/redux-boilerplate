@@ -8,14 +8,20 @@ class Action {
     if (this.name) {
       this.name = this.name.toUpperCase()
     }
+
     this._delta = action => {}
 
-    this._builder = () => ({
-      type: this.name,
-      payload: {
-        ...arguments
-      }
-    })
+    this._builder = () => {
+      const mapping = Array.isArray(arguments[0]) ? arguments[0] : [...arguments]
+      const type = this.name
+      return () => ({
+        type,
+        payload: mapping.reduce((mapped, mapItem, index) => {
+          mapped[mapItem] = arguments[index]
+          return mapped
+        }, {})
+      })
+    }
   }
 
   set delta (factory) {
@@ -30,8 +36,8 @@ class Action {
     return this._builder
   }
 
-  merge (state, action) {
-    return Object.assign(cloneDeep(state), this._delta(action))
+  merge (state, action, internalState = {}) {
+    return Object.assign(cloneDeep(state), internalState, this._delta(action))
   }
 
   matches (requestedAction) {
@@ -40,8 +46,45 @@ class Action {
 }
 
 class AttemptAction extends Action {
+  constructor (name) {
+    super(name)
+    this.success = new Action(name + '_SUCCESS')
+    this.error = new Action(name + '_ERROR')
+    this.successBuilder = this.success.builder('result')
+    this.errorBuilder = this.error.builder('error')
+
+    this._builder = () => {
+      if (arguments[0] instanceof Error) {
+        return this.errorBuilder
+      }
+      const type = this.name
+      const mapping = Array.isArray(arguments[0]) ? arguments[0] : [...arguments]
+      return () => ({
+        type,
+        payload: mapping.reduce((mapped, mapItem, index) => {
+          mapped[mapItem] = arguments[index]
+          return mapped
+        }, {})
+      })
+    }
+  }
+
   matches (requestedAction) {
-    return requestedAction === this.name || this.name + '_SUCCESS' || this.name + '_ERROR'
+    return super.matches(requestedAction) || this.success.matches(requestedAction) || this.error.matches(requestedAction)
+  }
+
+  merge (state, action) {
+    if (super.matches(action.type)) {
+      return super.merge(state, action, { loading: true })
+    }
+
+    if (this.success.matches(action.type)) {
+      return this.success.merge(state, action, { loading: false, result: null })
+    }
+
+    if (this.error.matches(action.type)) {
+      return this.error.merge(state, action, { loading: false, error: null })
+    }
   }
 }
 
