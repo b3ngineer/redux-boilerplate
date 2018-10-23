@@ -8,6 +8,9 @@ export default class AttemptAction extends Action {
     this.error = new Action(name + '_ERROR')
     this.successBuilder = this.success.builder('result')
     this.errorBuilder = this.error.builder('error')
+    this.error.delta = ({ payload }) => ({
+      error: payload.error
+    })
   }
 
   typedBuildAction (actionParams) {
@@ -36,7 +39,7 @@ export default class AttemptAction extends Action {
     }
 
     if (this.success.matches(action.type)) {
-      return this.success.merge(state, action, { loading: false, result: null })
+      return this.success.merge(state, action, { loading: false })
     }
 
     if (this.error.matches(action.type)) {
