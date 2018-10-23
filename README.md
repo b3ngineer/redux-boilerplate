@@ -62,7 +62,7 @@ export const SomeData = createReducer(attemptGetSomeData)
 
 ```javascript
 // SomeData/index.js
-import { createReducer, attempt, Succes } from 'terse-redux'
+import { createReducer, attempt, Success } from 'terse-redux'
 import { myApiCall } from './my-api-call'
 
 const attemptGetSomeData = attempt('GET_SOME_DATA')
