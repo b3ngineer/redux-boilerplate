@@ -11,7 +11,7 @@ $ yarn add terse-redux
 A transpiler will be necessary if you plan to copy+paste these examples somewhere--and plan to run them.  
 
 ### Size matters
-Instead of `actions.js` and a `reducer.js` for each logical grouping:
+Instead of `actions.js` and a `reducer.js` (and even a `saga.js`) for each logical grouping:
 
 ```javascript
 // SomeData/index.js
@@ -32,28 +32,30 @@ export const setSomeData = actionSetSomeData.builder('data')
 export const SomeData = createReducer(actionSetSomeData /*, ... */)
 ```
 
-**Note:** *you can use the "Δ" unicode character as shorthand for the getter "delta".*  
+**Note:** *you can use the "Δ" unicode character as shorthand for the getter "delta" to be exceptionally terse (and hipster).*  
 
-**Also note:** *don't use the "Δ" getter if you are afraid of unicode characters--or if you don't use an IDE with good typeahead.*
+**Also note:** *don't use the "Δ" getter if you are afraid of unicode characters--or if you don't use an IDE with good typeahead.  Or you work with others.*
 
-#### Action builders
-The builder method for an action returns, uhm, an action builder.  The signature is described as names used for mapping ordered arguments in the payload.  They are typically exported for use in components and such.
+#### Action creators
+The creator methods (syn) on an action return, uhm, an action creator.   The signature parameter(s) is/are declared as names used for mapping ordered arguments in the payload.  Action creators are typically exported for use in components and such.
 
 ```javascript
+// Examples for a for an action creator with payload of { arg1: value1, arg2: value2 }
+
 // separate args
-export const setSomeData = actionSetSomeData.builder('arg1', 'arg2')
+export const setSomeData = actionSetSomeData.creator('arg1', 'arg2')
 
 // arrays are fun
-export const setSomeData = actionSetSomeData.builder(['arg1', 'arg2'])
+export const setSomeData = actionSetSomeData.creator(['arg1', 'arg2'])
 
 // stringy
-export const setSomeData = actionSetSomeData.builder('arg1, arg2')
+export const setSomeData = actionSetSomeData.creator('arg1, arg2')
 
 // template literal because reasons
-export const setSomeData = actionSetSomeData.builder`arg1, arg2`
+export const setSomeData = actionSetSomeData.creator`arg1, arg2`
 
 // template literal without spaces
-export const setSomeData = actionSetSomeData.builder`arg1,arg2`
+export const setSomeData = actionSetSomeData.creator`arg1,arg2`
 ```
 
 
