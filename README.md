@@ -22,14 +22,8 @@ actionSetSomeData.delta = ({ payload }) => ({
     data: payload.data
   }
 })
-
-// ... create lots of cool actions ...
-
-// export action builders for use elsewhere
 export const setSomeData = actionSetSomeData.builder('data')
-
-// combine action objects into a reducer
-export const SomeData = createReducer(actionSetSomeData /*, ... */)
+export const SomeData = createReducer({ data: null }, actionSetSomeData)
 ```
 
 **Note:** *you can use the "Δ" unicode character as shorthand for the getter "delta" to be exceptionally terse (and hipster).*  
