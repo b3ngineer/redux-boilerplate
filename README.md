@@ -36,6 +36,26 @@ export const SomeData = createReducer(actionSetSomeData /*, ... */)
 
 **Also note:** *don't use the "Δ" getter if you are afraid of unicode characters--or if you don't use an IDE with good typeahead.*
 
+#### Action builders
+The builder method for an action returns, uhm, an action builder.  The signature is described as names used for mapping ordered arguments in the payload.  They are typically exported for use in components and such.
+
+```javascript
+// separate args
+export const setSomeData = actionSetSomeData.builder('arg1', 'arg2')
+
+// arrays are fun
+export const setSomeData = actionSetSomeData.builder(['arg1', 'arg2'])
+
+// stringy
+export const setSomeData = actionSetSomeData.builder('arg1, arg2')
+
+// template literal because reasons
+export const setSomeData = actionSetSomeData.builder`arg1, arg2`
+
+// template literal without spaces
+export const setSomeData = actionSetSomeData.builder`arg1,arg2`
+```
+
 
 ### A pattern for asynchronous actions
 If you ever use actions that chain to success or error states, this syntax is terse<sup>3</sup>:
@@ -58,7 +78,7 @@ attemptGetSomeData.success.delta = ({ payload }) => ({
 export const SomeData = createReducer(attemptGetSomeData)
 ```
 
-##### Extended for `redux-saga`
+#### Extended for `redux-saga`
 
 ```javascript
 // SomeData/index.js
