@@ -1,5 +1,5 @@
 import Action from './Action'
-import Result from './Result'
+import Success from './Success'
 
 export default class AttemptAction extends Action {
   constructor (name) {
@@ -15,7 +15,7 @@ export default class AttemptAction extends Action {
       return this.errorBuilder(actionParams[0])
     }
 
-    if (actionParams[0] instanceof Result) {
+    if (actionParams[0] instanceof Success) {
       return this.successBuilder(actionParams[0])
     }
 

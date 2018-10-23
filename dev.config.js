@@ -53,8 +53,7 @@ module.exports = {
     ignored: /node_modules/
   },
   entry: {
-    main: path.resolve(__dirname, 'src/index.js'),
-    'test.spec': path.resolve(__dirname, '__test__/test.spec.js')
+    main: path.resolve(__dirname, 'src/index.js')
   },
   output: {
     path: path.resolve(__dirname, 'dist')
@@ -64,8 +63,7 @@ module.exports = {
       {
         test: /\.js$/,
         include: [
-          path.resolve(__dirname, 'src'),
-          path.resolve(__dirname, '__test__')
+          path.resolve(__dirname, 'src')
         ],
         use: {
           loader: 'babel-loader'
@@ -75,7 +73,7 @@ module.exports = {
   },
   plugins: [
     new WatchTestRunnerPlugin({
-      cmd: 'jest --notify dist/test.spec.js'
+      cmd: 'jest --notify'
     })
   ],
   resolve: {

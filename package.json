@@ -10,15 +10,17 @@
     "jest": "jest",
     "webpack": "webpack",
     "start": "webpack --config=dev.config.js --watch",
-    "test": "jest dist/test.spec.js"
+    "test": "jest"
   },
   "devDependencies": {
     "@babel/cli": "^7.0.0-beta.49",
-    "@babel/core": "^7.0.0-beta.49",
+    "@babel/core": "^7.1.2",
     "@babel/plugin-proposal-class-properties": "^7.0.0-beta.49",
     "@babel/plugin-proposal-decorators": "^7.1.2",
     "@babel/preset-env": "^7.0.0-beta.49",
     "@babel/preset-stage-0": "^7.0.0-beta.49",
+    "babel-core": "7.0.0-bridge.0",
+    "babel-jest": "^23.6.0",
     "babel-loader": "^8.0.4",
     "colorize": "^0.1.0",
     "eslint": "^5.7.0",
@@ -29,6 +31,7 @@
     "eslint-plugin-standard": "^4.0.0",
     "jest": "^23.6.0",
     "prettier": "^1.14.3",
+    "regenerator-runtime": "^0.12.1",
     "webpack": "^4.21.0",
     "webpack-command": "^0.4.1"
   },
