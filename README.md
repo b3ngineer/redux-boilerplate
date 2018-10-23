@@ -1,6 +1,12 @@
 # terse-redux
 Making Redux terse... because if I have to write one more switch statement I'm going to barf.
 
+### Don't use this module if...
+
+* You find writing boilerplate code *soothing*.
+* You think verbose code is good code (no matter what it does).
+* You get paid by the file.
+
 ### Installation
 
 ```bash
@@ -8,10 +14,10 @@ $ yarn add terse-redux
 ``` 
 
 ### This is an opinionated module (or maybe just opinionated examples)
-A transpiler will be necessary if you plan to copy+paste these examples somewhere--and plan to run them.  
+A transpiler will be necessary if you plan to copy+paste these examples somewhere--and plan to run them.
 
 ### Size matters
-Instead of `actions.js` and a `reducer.js` (and even a `saga.js`) for each logical grouping:
+Don't bloat your project with an `actions.js` AND `reducer.js` (AND even `saga.js`) for each logical grouping of actions.
 
 ```javascript
 // SomeData/index.js
@@ -26,7 +32,7 @@ export const setSomeData = actionSetSomeData.builder('data')
 export const SomeData = createReducer({ data: null }, actionSetSomeData)
 ```
 
-**Note:** *you can use the "Δ" unicode character as shorthand for the getter "delta" to be exceptionally terse (and hipster).*  
+**Note:** *you can use the "Δ" unicode character as shorthand for the getter "delta" to be exceptionally terse (and hipster).*
 
 **Also note:** *don't use the "Δ" getter if you are afraid of unicode characters--or if you don't use an IDE with good typeahead.  Or you work with others.*
 
@@ -102,8 +108,8 @@ export function* saga() {
       try {
         const data = yield call(myApiCall, payload)
         // will build action for 'GET_SOME_DATA_SUCCESS'
-        // payload will be { result: data }
-        yield put(getSomeData(new Success(data)))
+        // payload will be { result }
+        yield put(getSomeData(new Success(result)))
       } catch (error) {
         // will build action for 'GET_SOME_DATA_ERROR'
         // payload will be { error }

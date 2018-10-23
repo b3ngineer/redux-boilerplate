@@ -65,6 +65,10 @@ export default class Action {
     return this._builder
   }
 
+  get creator () {
+    return this._builder
+  }
+
   get name () {
     return this._name
   }
