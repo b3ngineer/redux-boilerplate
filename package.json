@@ -10,6 +10,7 @@
     "jest": "jest",
     "webpack": "webpack",
     "start": "webpack --config=dev.config.js --watch",
+    "build": "webpack --config=prod.config.js",
     "test": "jest"
   },
   "devDependencies": {

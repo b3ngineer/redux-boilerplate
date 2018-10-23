@@ -4,10 +4,15 @@ const { cloneDeep } = _
 
 export default class Action {
   constructor (name) {
-    this.name = Array.isArray(name) ? name[0] : name
-    if (this.name) {
-      this.name = this.name.toUpperCase()
+    this._name = Array.isArray(name) ? name[0] : name
+
+    if (!this._name) {
+      throw new Error(
+        'Missing value for name parameter in call to Action.constructor'
+      )
     }
+
+    this._name = this._name.toUpperCase()
 
     this._delta = action => {}
 
@@ -58,6 +63,14 @@ export default class Action {
 
   get builder () {
     return this._builder
+  }
+
+  get name () {
+    return this._name
+  }
+
+  get NAME () {
+    return this._name
   }
 
   merge (state, action, internalState = {}) {

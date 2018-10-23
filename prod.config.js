@@ -2,13 +2,17 @@ const path = require('path')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
 module.exports = {
+  target: 'web',
   mode: 'production',
   entry: path.resolve(__dirname, 'src/index.js'),
   watchOptions: {
     ignored: /node_modules/
   },
   output: {
-    path: path.resolve(__dirname, 'dist')
+    filename: '[name].js',
+    library: 'terse-redux',
+    libraryTarget: 'umd',
+    path: path.join(__dirname, 'dist')
   },
   optimization: {
     minimizer: [
