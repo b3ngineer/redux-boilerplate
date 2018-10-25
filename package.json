@@ -1,6 +1,6 @@
 {
   "name": "terse-redux",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Redux without the boring parts",
   "main": "dist/bundle.js",
   "repository": "git@github.com:b3ngineer/terse-redux.git",
