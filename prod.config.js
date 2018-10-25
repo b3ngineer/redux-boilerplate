@@ -4,7 +4,10 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 module.exports = {
   target: 'web',
   mode: 'production',
-  entry: path.resolve(__dirname, 'src/index.js'),
+  entry: {
+    'bundle': './src/index.js',
+    'bundle.min': './src/index.js'
+  },
   watchOptions: {
     ignored: /node_modules/
   },
@@ -17,6 +20,7 @@ module.exports = {
   optimization: {
     minimizer: [
       new UglifyJsPlugin({
+        include: /\.min\.js$/,
         cache: true,
         parallel: true,
         sourceMap: true,

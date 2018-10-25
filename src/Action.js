@@ -1,6 +1,4 @@
-import _ from 'lodash' // @types/lodash.clonedeep
-
-const { cloneDeep } = _
+import cloneDeep from 'lodash.clonedeep'
 
 export default class Action {
   constructor (name) {

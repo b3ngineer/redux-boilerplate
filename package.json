@@ -1,8 +1,8 @@
 {
   "name": "terse-redux",
   "version": "1.0.0",
-  "description": "Making Redux terse... because if I have to write one more switch statement I'm going to barf.",
-  "main": "dist/main.js",
+  "description": "Redux without the boring parts",
+  "main": "dist/bundle.js",
   "repository": "git@github.com:b3ngineer/terse-redux.git",
   "author": "b3ngineer <ben.harris.when@gmail.com>",
   "license": "MIT",
@@ -41,6 +41,6 @@
     "semi": false
   },
   "dependencies": {
-    "@types/lodash.clonedeep": "^4.5.4"
+    "lodash.clonedeep": "^4.5.0"
   }
 }
